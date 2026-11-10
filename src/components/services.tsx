@@ -12,22 +12,22 @@ const packages = [
   {
     name: "Website Build",
     label: "A strong foundation",
-    description: "A considered digital home for your business.",
-    features: ["Full multi-page website", "Basic search optimisation", "Essential graphic design"],
+    description: "A website, online store or web app shaped around your business.",
+    features: ["Business websites, ecommerce stores or custom web apps", "Responsive design and agreed integrations", "Search foundations and graphic design"],
     service: "Website build",
   },
   {
     name: "AI Integration",
     label: "A connected system",
     description: "We build the system. Your team works the opportunities.",
-    features: ["Website, advanced SEO + AEO and graphic design", "AI lead scraping and email outreach setup", "Website lead tracking and content integration", "AI sales dashboard, scripts and advice", "CRM included and monthly reporting"],
+    features: ["Website, advanced SEO + AEO and graphic design", "Lead scraping and email outreach setup", "Website lead tracking and content integration", "AI sales dashboard, scripts and advice", "CRM included and monthly reporting"],
     service: "Email outreach setup",
   },
   {
     name: "Full AI Integration",
     label: "Built and run for you",
     description: "Your connected growth system, managed end to end.",
-    features: ["Multi-page website included at no extra cost", "Managed campaigns, AI lead scraping and email outreach", "Advanced SEO + AEO, graphic design and content", "AI sales dashboard, scripts, advice and CRM included", "Weekly reviews and monthly visibility reporting"],
+    features: ["Multi-page website included at no extra cost", "Managed campaigns, lead scraping and email outreach", "Advanced SEO + AEO, graphic design and content", "AI sales dashboard, scripts, advice and CRM included", "Weekly reviews and monthly visibility reporting"],
     service: "Sales dashboard",
   },
 ];
@@ -39,7 +39,7 @@ function ServiceSystem() {
       <div className="service-system-lanes">
         <div className="service-system-lane">
           <div className="service-system-lane-label"><span>01</span><strong>Outbound</strong><small>Reach your audience</small></div>
-          <div className="service-system-steps"><span>AI lead scraper</span><Arrow /><span>AI email outreach</span></div>
+          <div className="service-system-steps"><span>Lead scraper</span><Arrow /><span>Email outreach</span></div>
         </div>
         <div className="service-system-lane">
           <div className="service-system-lane-label"><span>02</span><strong>Inbound</strong><small>Your audience finds you</small></div>
@@ -73,7 +73,7 @@ export function Services() {
         <SectionLabel number="03">WHAT WE DO</SectionLabel>
         <div className="section-heading-row">
           <WordReveal id="services-heading">What we <span className="serif-word">do.</span></WordReveal>
-          <div className="section-intro"><p>Advanced SEO and AEO, graphic design, campaigns and AI lead generation for business and consumer audiences. We connect email outreach, website lead tracking and content with an AI sales dashboard, scripts, sales advice and CRM included.</p><a className="growth-jump" href="#growth-services">Explore our business growth services <Arrow diagonal /></a></div>
+          <div className="section-intro"><p>Business websites, ecommerce stores and custom web apps, alongside advanced SEO and AEO, graphic design and lead-generation campaigns. We connect email outreach, website lead tracking and content with an AI sales dashboard, scripts, sales advice and CRM included.</p><a className="growth-jump" href="#growth-services">Explore our business growth services <Arrow diagonal /></a></div>
         </div>
       </div>
       <ServiceSystem />

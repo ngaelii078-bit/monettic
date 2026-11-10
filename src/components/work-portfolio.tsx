@@ -28,7 +28,7 @@ export function WorkPortfolio() {
         <nav aria-label="Breadcrumb" className="portfolio-breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Our work</span></nav>
         <div className="portfolio-intro-grid">
           <div>
-            <p className="portfolio-eyebrow"><span /> THE CONCRETE PORTFOLIO</p>
+            <p className="portfolio-eyebrow"><span /> THE MONETTIC PORTFOLIO</p>
             <WordReveal as="h1" id="work-heading">Our work.<br /><span className="portfolio-title-accent">Out in the world.</span></WordReveal>
           </div>
           <div className="portfolio-introduction">

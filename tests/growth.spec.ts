@@ -5,19 +5,19 @@ test("growth offerings feed the enquiry form and retain visitor input", async ({
   await page.goto("/");
   await page.getByRole("link", { name: "Explore our business growth services" }).click();
   await expect(page.locator(".growth-item")).toHaveCount(8);
-  await page.getByRole("button", { name: "Discuss AI email outreach + lead scraper", exact: true }).click();
+  await page.getByRole("button", { name: "Discuss Email outreach + lead scraper", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: /Make it/ });
-  await expect(dialog.getByLabel("AI outreach & scraping", { exact: true })).toBeChecked();
+  await expect(dialog.getByLabel("Outreach & scraping", { exact: true })).toBeChecked();
   await dialog.getByLabel("Your name").fill("Sam Client");
   await dialog.getByLabel("Website lead tracking", { exact: true }).check();
   await page.keyboard.press("Escape");
   await page.getByRole("button", { name: "Discuss CRM included", exact: true }).click();
   await expect(dialog.getByLabel("Your name")).toHaveValue("Sam Client");
-  for (const label of ["AI outreach & scraping", "Website lead tracking", "Lead dashboard / CRM"]) {
+  for (const label of ["Outreach & scraping", "Website lead tracking", "Lead dashboard / CRM"]) {
     await expect(dialog.getByLabel(label, { exact: true })).toBeChecked();
   }
   const values = await dialog.locator("form").evaluate(form => new FormData(form as HTMLFormElement).getAll("services"));
-  expect(values).toEqual(expect.arrayContaining(["AI outreach & scraping", "Website lead tracking", "Lead dashboard / CRM"]));
+  expect(values).toEqual(expect.arrayContaining(["Outreach & scraping", "Website lead tracking", "Lead dashboard / CRM"]));
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: "Discuss CRM included", exact: true })).toBeFocused();
 });

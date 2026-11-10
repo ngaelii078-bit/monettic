@@ -10,7 +10,7 @@ const portfolio = [...featuredProjects, projects.find(project => project.id === 
 const digitalProject = projects.find(project => project.id === "dcb-spares")!;
 
 export function HeroShowcase() {
-  return <div className="hero-showcase" aria-label="Explore what Concrete Agency creates">
+  return <div className="hero-showcase" aria-label="Explore what monettic creates">
     <a className="showcase-item showcase-portfolio" href="#work" aria-label="Explore our selected website projects">
       <div className="showcase-label"><span><i />01 / SELECTED WORK</span><ShowcaseArrow /></div>
       <div className="showcase-panel">

@@ -19,7 +19,7 @@ export function FoundationAccent({ className = "" }: { className?: string }) {
 }
 
 export function Mark({ className = "" }: { className?: string }) {
-  return <svg className={className} width="37" height="37" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 4h24v8H16v16h16v8H8V4Z" fill="currentColor" /><path d="M24 16h12v8H24z" fill="currentColor" /></svg>;
+  return <svg className={className} width="37" height="37" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 34V6h7l8 12L28 6h7v28h-7V18l-8 11-8-11v16H5Z" fill="currentColor" /></svg>;
 }
 
 export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {

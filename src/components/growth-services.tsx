@@ -19,7 +19,7 @@ export function GrowthServices() {
         <div className="growth-intro">
           <div className="eyebrow"><span className="status-dot" /> MORE THAN A WEBSITE</div>
           <WordReveal id="growth-heading" className="growth-heading">Reach your audience. Give your sales team <span className="lime">a clearer next move.</span></WordReveal>
-          <p className="growth-description">Campaigns, AI lead scraping and email outreach, connected with design, content and your sales tools. CRM included. Built around your audience.</p>
+          <p className="growth-description">Campaigns, lead scraping and email outreach, connected with design, content and your sales tools. CRM included. Built around your audience.</p>
           <div className="growth-journey" aria-label="Attract, capture, connect, grow"><div className="growth-progress-track" aria-hidden="true"><motion.div className="growth-progress" style={{ scaleX: scrollYProgress }} /></div><div className="growth-journey-labels"><span>Attract</span><span>Capture</span><span>Connect</span><span>Grow</span></div></div>
           <ProjectButton className="button button-lime">Build your next step</ProjectButton>
         </div>
@@ -36,6 +36,6 @@ export function GrowthServices() {
         </ol>
       </div>
     </div>
-    <div className="growth-type-rail" aria-hidden="true"><motion.div className="growth-type-track" style={{ x: railX }}><span>Good design.</span><FoundationAccent className="rail-accent" /><span>Better connections.</span><FoundationAccent className="rail-accent" /><span>Concrete impact.</span></motion.div></div>
+    <div className="growth-type-rail" aria-hidden="true"><motion.div className="growth-type-track" style={{ x: railX }}><span>Good design.</span><FoundationAccent className="rail-accent" /><span>Better connections.</span><FoundationAccent className="rail-accent" /><span>Lasting impact.</span></motion.div></div>
   </section>;
 }

@@ -96,7 +96,7 @@ test("portfolio filtering and keyboard-accessible project details", async ({ pag
 test("services expose their content and form validates required fields", async ({ page }) => {
   await page.goto("/");
   const website = page.locator("#service-trigger-0");
-  await expect(website).toContainText("Website, included");
+  await expect(website).toContainText("Websites, ecommerce & web apps");
   if (await website.getAttribute("aria-expanded") === "false") await website.click();
   await expect(website).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("#service-panel-0")).toBeVisible();
@@ -119,7 +119,7 @@ test("journal and privacy routes work", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: /Good websites start with better questions/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Good websites start with better questions.");
-  await expect(page).toHaveTitle(/Good websites.*Concrete Agency/);
+  await expect(page).toHaveTitle(/Good websites.*monettic/);
   await page.getByRole("link", { name: "Privacy policy", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Privacy policy.");
   await expect(page.locator(".article-body").getByRole("link", { name: "eliseeweb@gmail.com" })).toHaveAttribute("href", "mailto:eliseeweb@gmail.com");

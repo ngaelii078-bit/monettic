@@ -29,7 +29,7 @@ const editorial = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: homeTitle, template: "%s | Concrete Agency" },
+  title: { default: homeTitle, template: "%s | monettic" },
   description: agency.description,
   openGraph: { title: homeTitle, siteName: agency.name, description: agency.description, type: "website", locale: "en_ZA", images: [shareImage] },
   twitter: { card: "summary_large_image", images: [shareImage] },

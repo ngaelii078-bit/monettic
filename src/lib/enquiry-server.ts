@@ -101,7 +101,7 @@ function createLimiter() {
 export function createEnquiryHandler(deliver: Delivery, password = () => process.env.GMAIL_APP_PASSWORD) {
   const allowAttempt = createLimiter();
   return async (request: Request) => {
-    if (!allowedOrigin(request)) return Response.json({ success: false, message: "Please send your message from the Concrete Agency website." }, { status: 403, headers });
+    if (!allowedOrigin(request)) return Response.json({ success: false, message: "Please send your message from the monettic website." }, { status: 403, headers });
     let enquiry: Enquiry;
     try { enquiry = validate(await readPayload(request)); }
     catch (error) {
@@ -129,12 +129,12 @@ export function enquiryMail(enquiry: Enquiry) {
   const rows = [["Name", enquiry.name], ["Email", enquiry.email], ["Company", enquiry.company], ["Package", enquiry.package], ["Services", enquiry.services], ["Budget", enquiry.budget], ["Project details", enquiry.message]];
   const escape = (text: string) => text.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
   return {
-    from: { name: "Concrete Agency website", address: agency.email },
+    from: { name: "monettic website", address: agency.email },
     to: agency.email,
     replyTo: { name: enquiry.name, address: enquiry.email },
-    subject: "New project enquiry | Concrete Agency",
+    subject: "New project enquiry | monettic",
     text: `NEW PROJECT ENQUIRY\n\n${rows.map(([label, value]) => `${label}: ${value}`).join("\n\n")}\n\nReply to this email to contact the visitor.`,
-    html: `<div style="font-family:Arial,sans-serif;color:#12374a;max-width:640px;margin:auto"><h1 style="background:#08485f;color:white;padding:28px;font-size:26px">A new Concrete enquiry</h1><table style="width:100%;border-collapse:collapse">${rows.map(([label, value]) => `<tr><th style="text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid #dceaf0">${label}</th><td style="padding:14px;border-bottom:1px solid #dceaf0">${escape(value).replace(/\n/g, "<br>")}</td></tr>`).join("")}</table><p style="font-size:13px;padding:14px">Reply to this email to contact the visitor.</p></div>`,
+    html: `<div style="font-family:Arial,sans-serif;color:#12374a;max-width:640px;margin:auto"><h1 style="background:#08485f;color:white;padding:28px;font-size:26px">A new monettic enquiry</h1><table style="width:100%;border-collapse:collapse">${rows.map(([label, value]) => `<tr><th style="text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid #dceaf0">${label}</th><td style="padding:14px;border-bottom:1px solid #dceaf0">${escape(value).replace(/\n/g, "<br>")}</td></tr>`).join("")}</table><p style="font-size:13px;padding:14px">Reply to this email to contact the visitor.</p></div>`,
     disableFileAccess: true,
     disableUrlAccess: true,
   };

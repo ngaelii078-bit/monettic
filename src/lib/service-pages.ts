@@ -2,21 +2,24 @@ import { serviceLinks } from "./service-links";
 
 export const servicePages = [
   {
-    ...serviceLinks[0], title: "Website Design South Africa", service: "Website build",
-    description: "Website design and development for South African businesses. Explore responsive websites, service pages and enquiry forms built around your customers.",
-    headline: "A website that gives your business a clear next step.",
-    introduction: "Concrete Agency designs and builds websites for South African businesses that need a clearer way to present their services and receive enquiries. We bring your offer, work and contact options together in a considered experience across desktop, tablet and phone.",
-    summary: "A distinctive digital home, built around your customers and the way your business works.",
-    deliverables: ["Responsive design and development", "Service and campaign landing pages", "Project and portfolio showcases", "Contact forms with email delivery", "Technical SEO foundations", "Brand graphics and content integration"],
+    ...serviceLinks[0], title: "Website Design & Ecommerce South Africa", service: "Website build",
+    description: "Website design and development across industries: business websites, ecommerce stores, technology and education sites, portfolios and custom web applications.",
+    headline: "Websites and online stores. Built for your ambition.",
+    introduction: "monettic builds websites for businesses, brands and organisations across industries. From business websites and ecommerce stores to technology and education websites, portfolios, landing pages and custom web applications, we shape the experience around your audience and what you need it to do.",
+    summary: "Business websites, ecommerce stores, technology sites, portfolios and custom web applications.",
+    deliverables: ["Business, brand and service websites", "Ecommerce stores with product catalogues and checkout", "Technology and education websites", "Portfolio, community and campaign websites", "Custom web applications and integrations", "Responsive design across desktop, tablet and phone", "Technical SEO foundations", "Graphic design and content integration"],
     sections: [
-      { title: "Start with what your customers need", text: "A property business, a construction company and an industrial supplier have different buying journeys. We start with your audience, services and the questions your team answers every day. That helps us organise the pages, explain the offer and give each visitor a useful next step." },
-      { title: "Design with the whole journey in mind", text: "Strong typography, thoughtful spacing and restrained motion help your business feel consistent. We also work on the practical details: readable text, clear navigation, fast-loading images, accessible controls and forms that work on small screens. Project examples and service information sit alongside a direct way to get in touch." },
-      { title: "Build a foundation your team can use", text: "We agree the page structure, content and enquiry requirements before development. The website is then built, checked across screen sizes and prepared for launch. Page titles, descriptions, canonical URLs and a sitemap form part of the search foundations. For a connected sales process, enquiry capture can be extended into a dashboard and follow-up workflow." },
+      { title: "Build around the kind of website you need", text: "An online retailer, a technology company, a school and a creative studio need different experiences. We start with your audience, goals and required features, then plan the structure and design. Whether you need a clear business presence, a product-led website, an education platform or a custom web application, the scope follows your project." },
+      { title: "Give your online store a considered shopping journey", text: "For ecommerce, we plan how customers discover products, compare options, add items to a cart and complete checkout. Product information, payment integration, delivery options and order management are agreed around the way you sell. The storefront is designed to work across desktop, tablet and phone, with clear navigation and content your team can maintain." },
+      { title: "Connect design, content and functionality", text: "Strong typography, thoughtful spacing and restrained motion help your website feel consistent. We bring those details together with accessible controls, responsive layouts, optimised images and the integrations your project requires. Custom applications can include accounts, dashboards and business workflows, with the functionality agreed before development." },
+      { title: "Prepare your website for launch and growth", text: "We agree the pages, content, features and integrations before building, then check the finished experience across screen sizes. Titles, descriptions, canonical URLs and a sitemap form part of the search foundations. We also plan how your team will manage content or products, so the website can grow with your business." },
     ],
     faqs: [
+      { question: "What types of websites do you build?", answer: "We build business and corporate websites, ecommerce stores, technology and education websites, portfolios, community sites, landing pages and custom web applications. We work across industries and agree the features around your project." },
+      { question: "Can you build an ecommerce store?", answer: "Yes. We can build an online store with product listings, a cart and checkout, plus payment and delivery integrations suited to your business. Catalogue size, order management and any specialist functionality are agreed in the project scope." },
       { question: "Can I commission a website on its own?", answer: "Yes. Website Build is a standalone package. A multi-page website is also included at no extra cost with Full AI Integration; the wider package scope is agreed with you." },
-      { question: "Can you improve an existing website?", answer: "We can review its content, design, performance and enquiry journey, then recommend whether focused improvements or a rebuild make more sense." },
-      { question: "What do you need to provide a quote?", answer: "Tell us about your business, the pages you need, any existing website and the actions visitors should take. We’ll clarify content, integrations and timing before agreeing a scope." },
+      { question: "Can you improve an existing website or online store?", answer: "We can review its content, design, performance and customer journey, then recommend whether focused improvements or a rebuild make more sense." },
+      { question: "What do you need to provide a quote?", answer: "Tell us about your business, the kind of website you need, any existing site and the features visitors should be able to use. We’ll clarify content, products, integrations and timing before agreeing a scope." },
     ],
   },
   {
@@ -41,9 +44,9 @@ export const servicePages = [
     ...serviceLinks[2], title: "AI Integration & Automation South Africa", service: "AI integration",
     description: "AI integration for South African businesses: lead scraping, email outreach and a sales dashboard with scripts, AI advice and CRM included.",
     headline: "Connected tools. A better-equipped sales team.",
-    introduction: "Concrete Agency connects AI lead scraping, email outreach, website activity and content with the tools your sales team uses. Our AI lead dashboard gives reps scripts, sales advice and lead context, with CRM included to keep contacts and pipeline progress organised.",
-    summary: "AI lead tools, email outreach and a sales dashboard with scripts, advice and CRM included.",
-    deliverables: ["AI lead scraper and email outreach integration", "Website activity and lead-source connections", "AI lead dashboard for sales reps", "Sales scripts, talking points and AI sales advice", "CRM with contact records and pipeline tracking", "Content integration and campaign reporting"],
+    introduction: "monettic connects lead scraping, email outreach, website activity and content with the tools your sales team uses. Our AI lead dashboard gives reps scripts, sales advice and lead context, with CRM included to keep contacts and pipeline progress organised.",
+    summary: "Lead tools, email outreach and a sales dashboard with scripts, advice and CRM included.",
+    deliverables: ["Lead scraper and email outreach integration", "Website activity and lead-source connections", "AI lead dashboard for sales reps", "Sales scripts, talking points and AI sales advice", "CRM with contact records and pipeline tracking", "Content integration and campaign reporting"],
     sections: [
       { title: "Connect the workflow around your team", text: "We start with your audience, campaign process and existing tools. Lead research, email outreach, website activity and content each have a role. AI integration connects their useful information so your team can work from a shared view, with agreed review steps and clear responsibilities." },
       { title: "Give sales reps context and guidance", text: "The AI lead dashboard brings contact details, campaign sources and lead history together. Scripts, talking points and AI sales advice help reps prepare for conversations. Your team reviews the suggestions and decides how to approach each lead, while the dashboard records progress." },
@@ -57,14 +60,14 @@ export const servicePages = [
   },
   {
     ...serviceLinks[3], title: "Lead Generation South Africa", service: "Lead generation",
-    description: "Lead-generation campaigns, AI email outreach and lead scraping for business and consumer audiences in South Africa, connected to your sales dashboard and CRM.",
+    description: "Lead-generation campaigns, email outreach and lead scraping for business and consumer audiences in South Africa, connected to your sales dashboard and CRM.",
     headline: "Reach the right people. Build your lead pipeline.",
-    introduction: "Concrete Agency generates leads through campaigns, AI email outreach and AI-assisted lead scraping. We work with businesses targeting other businesses, individual consumers or both. Website activity, content and campaign leads connect with an AI sales dashboard and included CRM, giving your reps useful context, scripts and sales advice.",
-    summary: "Campaigns, AI email outreach and lead scraping for business and consumer audiences.",
-    deliverables: ["Lead-generation campaigns for business and consumer audiences", "AI lead scraping from public and approved sources", "AI-assisted email outreach and reply tracking", "Website click tracking linked to known leads", "Campaign graphics and content integration", "AI sales dashboard with scripts, advice and CRM included"],
+    introduction: "monettic generates leads through campaigns, email outreach and lead scraping. We work with businesses targeting other businesses, individual consumers or both. Website activity, content and campaign leads connect with an AI sales dashboard and included CRM, giving your reps useful context, scripts and sales advice.",
+    summary: "Campaigns, email outreach and lead scraping for business and consumer audiences.",
+    deliverables: ["Lead-generation campaigns for business and consumer audiences", "Lead scraping from public and approved sources", "Email outreach and reply tracking", "Website click tracking linked to known leads", "Campaign graphics and content integration", "AI sales dashboard with scripts, advice and CRM included"],
     sections: [
       { title: "Build campaigns around your audience", text: "We define who you want to reach, what you offer and which channels fit. Business and consumer audiences need different messaging, so the research, graphics and content are shaped around your customers. SEO and AEO can support discovery alongside your lead-generation campaigns." },
-      { title: "Find leads and connect your outreach", text: "AI-assisted lead scraping organises relevant information from public websites and approved sources into usable prospect lists. We review the available details and audience fit, then connect appropriate leads with personalised email outreach. Messages are prepared for approval, replies are organised and contact preferences are carried through the process." },
+      { title: "Find leads and connect your outreach", text: "Lead scraping organises relevant information from public websites and approved sources into usable prospect lists. We review the available details and audience fit, then connect appropriate leads with personalised email outreach. Messages are prepared for approval, replies are organised and contact preferences are carried through the process." },
       { title: "Connect website activity to your sales team", text: "Website click tracking shows where campaign interest comes from. When contact details are available or shared by a visitor, that activity can be linked to a known lead; anonymous clicks alone do not identify a person. The AI sales dashboard brings lead history, scripts and sales advice together, with CRM included for ownership and pipeline tracking." },
     ],
     faqs: [

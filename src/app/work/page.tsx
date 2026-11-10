@@ -6,7 +6,7 @@ import "./portfolio.css";
 
 export const metadata = pageMetadata(
   "Our Work — Website Design Portfolio",
-  "Explore Concrete Agency’s website portfolio, including DG Property, MicroLogistics, Ngenzeni Enterprise and more. View each project and visit the live website.",
+  "Explore monettic’s website portfolio, including DG Property, MicroLogistics, Ngenzeni Enterprise and more. View each project and visit the live website.",
   "/work/",
 );
 
@@ -16,7 +16,7 @@ export default function WorkPage() {
       breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Our work", path: "/work/" }]),
       {
         "@type": "CollectionPage", "@id": absoluteUrl("/work/#collection"),
-        name: "Concrete Agency website portfolio", url: absoluteUrl("/work/"),
+        name: "monettic website portfolio", url: absoluteUrl("/work/"),
         publisher: { "@id": organizationId },
         mainEntity: {
           "@type": "ItemList", numberOfItems: projects.length,

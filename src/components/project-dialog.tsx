@@ -63,12 +63,12 @@ export function ProjectDialog({ dialogRef }: { dialogRef: RefObject<HTMLDialogEl
         <span className="enquiry-confirmation-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="m11 20 6 6 13-13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
         <div className="eyebrow">A GOOD CONVERSATION STARTS HERE</div>
         <h2 id="project-title">Thank you.<br /><span>Message sent.</span></h2>
-        <p className="dialog-description">Your enquiry has been sent to the Concrete Agency team. We’ll get back to you at <strong className="enquiry-success-email">{replyEmail}</strong>.</p>
+        <p className="dialog-description">Your enquiry has been sent to the monettic team. We’ll get back to you at <strong className="enquiry-success-email">{replyEmail}</strong>.</p>
         <div className="enquiry-confirmation-note"><strong>WHAT HAPPENS NEXT</strong><p>We’ll review your ideas and get in touch to discuss the next step.</p></div>
         <button className="button button-lime" onClick={() => dialogRef.current?.close()}>Back to the website<span className="button-icon"><Arrow diagonal /></span></button>
       </div> : <>
         <div className="eyebrow">GOOD THINGS START WITH A CONVERSATION</div>
-        <h2 id="project-title">Make it<br /><span>concrete.</span></h2>
+        <h2 id="project-title">Let’s build<br /><span>something great.</span></h2>
         <p className="dialog-description">Tell us what you have in mind. Big ideas, small details — we’re all ears.</p>
         <form className="enquiry-form" method="post" onSubmit={submit} aria-busy={status === "sending"}>
           <fieldset className="enquiry-fields" disabled={status === "sending"}>
