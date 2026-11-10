@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { agency } from "./content";
 
-export const siteUrl = "https://www.concretetagency.com";
+export const siteUrl = "https://monettic.com";
 export const absoluteUrl = (path = "/") => new URL(path, siteUrl).href;
 export const organizationId = `${siteUrl}/#organization`;
 export const websiteId = `${siteUrl}/#website`;

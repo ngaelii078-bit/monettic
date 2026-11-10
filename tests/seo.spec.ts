@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { servicePages } from "../src/lib/service-pages";
 
-const siteUrl = "https://www.concretetagency.com";
+const siteUrl = "https://monettic.com";
 
 test("every sitemap page has server-rendered, unique metadata and the production canonical", async ({ request, page }) => {
   const response = await request.get("/sitemap.xml");

@@ -6,7 +6,7 @@ const enquiry: Enquiry = {
   package: "Website Build", services: "Website build, Website lead tracking",
   budget: "R30,000–R60,000", message: "A new website for our business.\nPlease get in touch.",
 };
-const origin = "https://www.concretetagency.com";
+const origin = "https://monettic.com";
 const requestFor = (body: unknown = enquiry, extra: Record<string, string> = {}) => new Request(`${origin}/api/enquiry/`, {
   method: "POST", headers: { Origin: origin, "Content-Type": "application/json", ...extra }, body: JSON.stringify(body),
 });
@@ -62,6 +62,15 @@ test("unconfigured email and SMTP rejection never return success or expose secre
   expect(body).not.toContain("private SMTP details");
   expect(body).not.toContain("test-credential");
   expect(JSON.parse(body).success).toBe(false);
+});
+
+test("both monettic domain variants can send enquiries", async () => {
+  let sent = 0;
+  const handler = createEnquiryHandler(async () => { sent++; }, () => "test-credential");
+  for (const Origin of ["https://monettic.com", "https://www.monettic.com"]) {
+    expect((await handler(requestFor(enquiry, { Origin }))).status).toBe(200);
+  }
+  expect(sent).toBe(2);
 });
 
 test("foreign or missing origins cannot send mail", async () => {

@@ -71,7 +71,7 @@ function validate(payload: Record<string, unknown>): Enquiry {
 }
 
 function allowedOrigin(request: Request) {
-  const origins = new Set(["https://concretetagency.com", "https://www.concretetagency.com"]);
+  const origins = new Set(["https://monettic.com", "https://www.monettic.com", "https://concretetagency.com", "https://www.concretetagency.com"]);
   // Preview deployment addresses are supplied by Vercel, never by form input.
   for (const host of [process.env.VERCEL_URL, process.env.VERCEL_PROJECT_PRODUCTION_URL]) {
     if (host) origins.add(`https://${host}`);
