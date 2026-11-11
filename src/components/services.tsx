@@ -7,30 +7,7 @@ import { serviceLinks } from "@/lib/service-links";
 import { Arrow, Reveal, SectionLabel } from "./ui";
 import { ProjectButton } from "./site-shell";
 import { WordReveal } from "./word-reveal";
-
-const packages = [
-  {
-    name: "Website Build",
-    label: "A strong foundation",
-    description: "A website, online store or web app shaped around your business.",
-    features: ["Business websites, ecommerce stores or custom web apps", "Responsive design and agreed integrations", "Search foundations and graphic design"],
-    service: "Website build",
-  },
-  {
-    name: "AI Integration",
-    label: "A connected system",
-    description: "We build the system. Your team works the opportunities.",
-    features: ["Website, advanced SEO + AEO and graphic design", "Lead scraping and email outreach setup", "Website lead tracking and content integration", "AI sales dashboard, scripts and advice", "CRM included and monthly reporting"],
-    service: "Email outreach setup",
-  },
-  {
-    name: "Full AI Integration",
-    label: "Built and run for you",
-    description: "Your connected growth system, managed end to end.",
-    features: ["Multi-page website included at no extra cost", "Managed campaigns, lead scraping and email outreach", "Advanced SEO + AEO, graphic design and content", "AI sales dashboard, scripts, advice and CRM included", "Weekly reviews and monthly visibility reporting"],
-    service: "Sales dashboard",
-  },
-];
+import { Partners } from "./partners";
 
 function ServiceSystem() {
   return <figure className="service-system" aria-labelledby="service-system-caption">
@@ -51,18 +28,6 @@ function ServiceSystem() {
     </div>
     <div className="service-system-outcomes"><span>THEN YOUR TEAM</span><ol><li>Reviews the lead</li><li><Arrow width="1em" height="1em" />Starts a conversation</li><li><Arrow width="1em" height="1em" />Tracks progress</li></ol><p>Results feed the next improvement <Arrow diagonal width="1em" height="1em" /></p></div>
   </figure>;
-}
-
-function ServicePackages() {
-  return <section id="service-packages" className="service-packages" aria-labelledby="packages-heading">
-    <div className="service-packages-heading"><div><span className="eyebrow">CHOOSE YOUR STARTING POINT</span><h3 id="packages-heading">Three ways to <span>move forward.</span></h3></div><p>Start with a website, connect your sales tools, or let us build and run the whole system.</p></div>
-    <div className="service-packages-grid">{packages.map((item, index) => <article className={`service-package ${index === 2 ? "service-package-full" : ""}`} key={item.name}>
-      <span className="service-package-label">{item.label}</span><h4>{item.name}</h4><p>{item.description}</p>
-      <ul>{item.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
-      <ProjectButton className="text-button" service={item.service} packageName={item.name}>Discuss {item.name}</ProjectButton>
-    </article>)}</div>
-    <p className="service-packages-note">We commit to the work and clear reporting. Rankings, lead counts and sales are never guaranteed.</p>
-  </section>;
 }
 
 export function Services() {
@@ -87,7 +52,7 @@ export function Services() {
           </div>
         </div>
       </Reveal>)}</div>
-      <ServicePackages />
+      <Partners />
     </div>
   </section>;
 }

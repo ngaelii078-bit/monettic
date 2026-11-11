@@ -1,0 +1,59 @@
+.partners{padding-top:88px}
+.partners-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;margin-bottom:30px}
+.partners-heading .eyebrow{font-size:8px;letter-spacing:.13em;color:#9fb3c5;margin-bottom:17px}
+.partners-heading h3{font-family:var(--font-editorial,Georgia,serif);font-size:clamp(34px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.025em}
+.partners-heading h3>span{font-style:italic;color:#b8dbef}
+.partners-heading>p{font-size:12px;line-height:1.8;max-width:310px;color:#afbfcc}
+
+/* Each tile spans two subgrid rows (logo, meta) so logos and dividers line up across a row */
+.partners-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.partner-item{min-width:0;display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}
+
+/* Porcelain glass tile: light enough for every brand's true colours on the navy section */
+.partner-tile{--ease:cubic-bezier(.22,1,.36,1);position:relative;isolation:isolate;display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;overflow:hidden;border-radius:16px;color:#0b2233;text-decoration:none;background:linear-gradient(165deg,#f8fbfd 0%,#e9f0f5 100%);border:1px solid #ffffff40;box-shadow:inset 0 1px 0 #fff,0 18px 40px -26px #000000a6;transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.partner-tile:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 85% at 0 0,#ffffffd9,transparent 55%),radial-gradient(90% 70% at 100% 100%,#bfe6ff59,transparent 60%);opacity:.9;transition:opacity .55s var(--ease)}
+.partner-logo{display:grid;place-items:center;height:150px;padding:24px}
+/* multiply lets logos with white backgrounds sit cleanly on the tile */
+.partner-logo img{width:calc(var(--logo-w) * var(--logo-scale,1));height:calc(var(--logo-h) * var(--logo-scale,1));max-width:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .7s var(--ease)}
+.partner-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px 14px 18px;border-top:1px solid #0b22331a;background:#ffffff80}
+.partner-name{display:flex;flex-direction:column;gap:4px;min-width:0}
+.partner-name strong{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:-.02em;line-height:1.25;color:#0b2233}
+.partner-name small{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#4a6274;line-height:1.4}
+.partner-visit{flex-shrink:0;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid #0b223329;color:#0b2233;transition:background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease)}
+.partner-visit svg{width:10px;height:10px;transition:transform .45s var(--ease)}
+
+@media(hover:hover){
+  .partner-tile:hover{transform:translateY(-6px);box-shadow:inset 0 1px 0 #fff,0 30px 60px -30px #000000d9,0 0 0 1px #8fd8ffb3,0 0 38px -8px #38bfff59}
+  .partner-tile:hover:before{opacity:1}
+  .partner-tile:hover .partner-logo img{transform:scale(1.05)}
+  .partner-tile:hover .partner-visit{background:#0b2233;border-color:#0b2233;color:#fff}
+  .partner-tile:hover .partner-visit svg{transform:translate(1px,-1px)}
+}
+.partner-tile:focus-visible{outline-offset:4px}
+.partner-tile:focus-visible .partner-visit{background:#0b2233;border-color:#0b2233;color:#fff}
+
+.partners-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px;font-size:9px;font-weight:500;letter-spacing:.12em;color:#a3b5c6}
+.partners-foot a{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0;color:#eef7ff;text-decoration:none;transition:gap .3s}
+.partners-foot a:hover{gap:12px}
+
+@media(max-width:1100px){.partner-logo{height:132px;--logo-scale:.9}}
+@media(max-width:800px){
+  .partners-heading{align-items:flex-start;flex-direction:column;gap:20px}
+  .partners-heading>p{max-width:420px}
+  .partners-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .partners-grid>li:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media(max-width:600px){
+  .partners{padding-top:60px}
+  .partners-heading h3{max-width:330px}
+  .partners-grid{gap:10px}
+  .partner-tile{border-radius:13px}
+  .partner-logo{height:100px;padding:16px;--logo-scale:.7}
+  .partner-meta{padding:11px 10px 11px 12px;gap:8px}
+  .partner-name strong{font-size:12px}
+  .partner-name small{font-size:8px;letter-spacing:.07em}
+  .partner-visit{width:20px;height:20px}
+  .partner-visit svg{width:8px;height:8px}
+  .partners-foot{flex-direction:column;align-items:flex-start;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){.partner-tile,.partner-tile:before,.partner-logo img,.partner-visit,.partner-visit svg,.partners-foot a{transition:none}.partner-tile:hover{transform:none}.partner-tile:hover .partner-logo img{transform:none}}

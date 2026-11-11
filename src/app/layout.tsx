@@ -9,6 +9,7 @@ import "./editorial-theme.css";
 import "@/components/hero.css";
 import "@/components/hero-showcase.css";
 import "@/components/services-overview.css";
+import "@/components/partners.css";
 import "@/components/work.css";
 import "./mobile-performance.css";
 import "@/components/project-dialog.css";

@@ -6,7 +6,7 @@ test("growth offerings feed the enquiry form and retain visitor input", async ({
   await page.getByRole("link", { name: "Explore our business growth services" }).click();
   await expect(page.locator(".growth-item")).toHaveCount(8);
   await page.getByRole("button", { name: "Discuss Email outreach + lead scraper", exact: true }).click();
-  const dialog = page.getByRole("dialog", { name: /Make it/ });
+  const dialog = page.getByRole("dialog", { name: /build something great/ });
   await expect(dialog.getByLabel("Outreach & scraping", { exact: true })).toBeChecked();
   await dialog.getByLabel("Your name").fill("Sam Client");
   await dialog.getByLabel("Website lead tracking", { exact: true }).check();

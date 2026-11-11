@@ -19,18 +19,41 @@ test("services and package enquiries remain usable on small screens", async ({ p
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator(".service-system").scrollIntoViewIfNeeded();
   await page.screenshot({ path: "test-results/services-system-mobile.png" });
-  await page.getByRole("button", { name: "Discuss Full AI Integration", exact: true }).click();
-  const dialog = page.getByRole("dialog", { name: /Make it/ });
-  await expect(dialog.getByRole("combobox", { name: "Package", exact: true })).toHaveValue("Full AI Integration");
-  await expect(dialog.getByLabel("Sales dashboard", { exact: true })).toBeChecked();
-  await dialog.getByLabel("Your name").fill("Casey Client");
+  const outreachButton = page.locator("#service-panel-2").getByRole("button", { name: /Let’s talk email outreach setup/ });
+  await outreachButton.click();
+  const dialog = page.getByRole("dialog", { name: /build something great/ });
+  await expect(dialog.getByLabel("Email outreach setup", { exact: true }).first()).toBeChecked();
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("button", { name: "Discuss Full AI Integration", exact: true })).toBeFocused();
-  await page.getByRole("button", { name: "Discuss Website Build", exact: true }).click();
-  await expect(dialog.getByRole("combobox", { name: "Package", exact: true })).toHaveValue("Website Build");
-  await expect(dialog.getByLabel("Website build", { exact: true })).toBeChecked();
-  await expect(dialog.getByLabel("Your name")).toHaveValue("Casey Client");
-  await page.keyboard.press("Escape");
+  await expect(outreachButton).toBeFocused();
+  await expect(page.getByRole("heading", { name: /Three ways to/ })).toHaveCount(0);
   const accessibility = await new AxeBuilder({ page }).include("#services").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
+  expect(accessibility.violations).toEqual([]);
+});
+
+test("partner logos link to each client's live website", async ({ page, context }) => {
+  const { projects } = await import("../src/lib/content");
+  await context.route(/^https:\/\/(www\.)?(dg-property|micrologistics|newlifeunited|thunderbrothers|datawarehouse\.ctcpm|lensphotostudio|dcbspares|fedpump|ngenzeni)\./, route => route.fulfill({ status: 200, contentType: "text/html", body: "<title>Client site</title>" }));
+  await page.goto("/#partners");
+  const partners = page.locator("#partners");
+  await expect(partners.getByRole("heading", { name: "Businesses we’ve built for.", exact: true })).toBeVisible();
+  const links = partners.locator(".partner-tile");
+  await expect(links).toHaveCount(projects.length);
+  for (const [index, project] of projects.entries()) {
+    const link = links.nth(index);
+    await expect(link).toHaveAttribute("href", project.url);
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(link).toHaveAccessibleName(new RegExp(`^${project.name}`));
+    await expect(link.locator("img")).toHaveAttribute("src", project.logo.src);
+    expect(await link.locator("img").evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBeTruthy();
+  }
+  const [popup] = await Promise.all([page.waitForEvent("popup"), links.first().click()]);
+  await expect(popup).toHaveURL(projects[0].url);
+  await popup.close();
+  for (const width of [320, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+  }
+  const accessibility = await new AxeBuilder({ page }).include("#partners").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
   expect(accessibility.violations).toEqual([]);
 });

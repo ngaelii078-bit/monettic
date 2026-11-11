@@ -22,9 +22,10 @@ export function Mark({ className = "" }: { className?: string }) {
   return <svg className={className} width="37" height="37" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 34V6h7l8 12L28 6h7v28h-7V18l-8 11-8-11v16H5Z" fill="currentColor" /></svg>;
 }
 
-export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+export function Reveal({ children, className = "", delay = 0, as = "div" }: { children: ReactNode; className?: string; delay?: number; as?: "div" | "li" }) {
   const reduced = useReducedMotion();
-  return <motion.div className={className} initial={false} whileInView={reduced ? undefined : { opacity: [0.15, 1], y: [24, 0] }} viewport={{ once: true, margin: "0px 0px -40px 0px" }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay }}>{children}</motion.div>;
+  const Component = as === "li" ? motion.li : motion.div;
+  return <Component className={className} initial={false} whileInView={reduced ? undefined : { opacity: [0.15, 1], y: [24, 0] }} viewport={{ once: true, margin: "0px 0px -40px 0px" }} transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay }}>{children}</Component>;
 }
 
 export function SectionLabel({ number, children, light = false }: { number: string; children: ReactNode; light?: boolean }) {

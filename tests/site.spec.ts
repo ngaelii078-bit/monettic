@@ -35,9 +35,9 @@ test("hero enquiries and preview links work while background motion pauses offsc
   await expect(lightfield).toHaveCSS("animation-play-state", "running");
 
   await page.locator(".hero-orb").click();
-  await expect(page.getByRole("dialog", { name: /Make it/ })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: /build something great/ })).toBeVisible();
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog", { name: /Make it/ })).not.toBeVisible();
+  await expect(page.getByRole("dialog", { name: /build something great/ })).not.toBeVisible();
   await expect(page.locator(".hero-orb")).toBeFocused();
 
   const previews = [
@@ -101,7 +101,7 @@ test("services expose their content and form validates required fields", async (
   await expect(website).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("#service-panel-0")).toBeVisible();
   await page.locator(".button-nav").click();
-  await expect(page.getByRole("dialog", { name: /Make it/ })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: /build something great/ })).toBeVisible();
   await page.getByRole("button", { name: "Send message", exact: true }).click();
   await expect(page.getByLabel("Your name")).toBeFocused();
   await page.getByLabel("Your name").fill("Alex Example");
