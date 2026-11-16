@@ -1,16 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll } from "motion/react";
 import { growthServices } from "@/lib/content";
 import { ProjectButton } from "./site-shell";
 import { WordReveal } from "./word-reveal";
-import { Arrow, FoundationAccent, Reveal, SectionLabel } from "./ui";
+import { Arrow, Reveal, SectionLabel } from "./ui";
 
 export function GrowthServices() {
   const section = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: section, offset: ["start 65%", "end 95%"] });
-  const railX = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return <section ref={section} id="growth-services" className="growth-section section-space" aria-labelledby="growth-heading">
     <div className="container">
@@ -36,6 +35,5 @@ export function GrowthServices() {
         </ol>
       </div>
     </div>
-    <div className="growth-type-rail" aria-hidden="true"><motion.div className="growth-type-track" style={{ x: railX }}><span>Good design.</span><FoundationAccent className="rail-accent" /><span>Better connections.</span><FoundationAccent className="rail-accent" /><span>Lasting impact.</span></motion.div></div>
   </section>;
 }

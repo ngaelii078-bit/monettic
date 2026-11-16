@@ -68,8 +68,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .growth-benefit{color:#d4edf6}
 .growth-tags>li{border-color:#bacde533;color:#bddfed;background:linear-gradient(130deg,#cbdfff09,#ffffff02)}
 .growth-enquire{border-color:#8deafa66;background:#8deafa07}
-.growth-type-rail{border-color:#b6cced26}
-.growth-type-track{font-family:var(--font-editorial);color:#abd7e8;letter-spacing:-.035em}
 .journal-section{border-color:var(--line);background:#052c42}
 .journal-art{border:1px solid #ffffff20;border-radius:10px}
 .journal-questions{background:#bceeff;color:#123b50}

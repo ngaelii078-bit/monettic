@@ -50,7 +50,7 @@ test("growth section is readable on mobile and honours reduced motion", async ({
   const words = page.locator("#growth-services .heading-word");
   await expect(words.last()).toHaveCSS("opacity", "1");
   await expect(words.last()).toHaveCSS("transform", "none");
-  await expect(page.locator(".growth-type-track")).toHaveCSS("transform", "none");
+  await expect(page.locator(".growth-type-rail")).toHaveCount(0);
   await page.screenshot({ path: "test-results/growth-mobile.png" });
   await page.getByRole("button", { name: "Discuss AI integration", exact: true }).click();
   await expect(page.getByRole("dialog").getByLabel("Connected AI workflows", { exact: true })).toBeChecked();
