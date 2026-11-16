@@ -67,7 +67,17 @@ test("partner marquee can be paused and respects reduced motion", async ({ page 
   await page.goto("/#partners");
   const partners = page.locator("#partners");
   const track = partners.locator(".partners-track");
-  await partners.locator(".partners-rail").scrollIntoViewIfNeeded();
+  const rail = partners.locator(".partners-rail");
+  await rail.scrollIntoViewIfNeeded();
+  for (const width of [320, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect.poll(() => rail.evaluate(element => {
+      const bounds = element.getBoundingClientRect();
+      return Math.abs(bounds.left) <= 1 && Math.abs(bounds.width - window.innerWidth) <= 1;
+    })).toBeTruthy();
+    await expect(rail).toHaveCSS("overflow-x", "hidden");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+  }
   await page.mouse.move(0, 0);
   await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("running");
 
@@ -81,7 +91,27 @@ test("partner marquee can be paused and respects reduced motion", async ({ page 
   await page.mouse.move(0, 0);
   await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("running");
 
+  const logos = partners.locator(".partner-tile");
+  await logos.nth((await logos.count()) - 2).focus();
+  await page.keyboard.press("Tab");
+  await expect(logos.last()).toBeFocused();
+  await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("paused");
+  await expect.poll(() => logos.last().evaluate(element => {
+    const item = element.getBoundingClientRect();
+    const container = element.closest(".partners-rail")!.getBoundingClientRect();
+    return item.left >= container.left - 1 && item.right <= container.right + 1;
+  })).toBeTruthy();
+
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationName)).toBe("none");
-  await expect(partners.locator(".partner-tile").last()).toHaveAttribute("href", /https:\/\//);
+  await expect(logos.last()).toHaveAttribute("href", /https:\/\//);
+  for (const width of [320, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect.poll(() => rail.evaluate(element => element.scrollWidth <= element.clientWidth + 1)).toBeTruthy();
+    expect(await logos.evaluateAll(elements => elements.every(element => {
+      const item = element.getBoundingClientRect();
+      const container = element.closest(".partners-rail")!.getBoundingClientRect();
+      return item.width > 0 && item.left >= container.left - 1 && item.right <= container.right + 1;
+    }))).toBeTruthy();
+  }
 });

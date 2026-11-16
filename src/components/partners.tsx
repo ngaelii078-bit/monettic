@@ -42,7 +42,8 @@ export function Partners() {
       <div><span className="eyebrow">OUR PARTNERS</span><h2 id="partners-heading">Businesses we’ve <span>built for.</span></h2></div>
       <p>Each logo opens a live website we designed and built. Click one to see it for yourself.</p>
     </div>
-    <div className="partners-rail" ref={section}>
+    </div>
+    <div className="partners-rail" ref={section} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.scrollLeft = 0; }}>
       <div className={`partners-track${paused || !visible ? " is-paused" : ""}`}>
         {[false, true].map(duplicate => <ul className="partners-group" key={String(duplicate)} aria-hidden={duplicate || undefined}>
           {projects.map(project => {
@@ -58,6 +59,7 @@ export function Partners() {
         </ul>)}
       </div>
     </div>
+    <div className="container">
     <button className="partners-motion-toggle" type="button" onClick={() => setPaused(current => !current)}>{paused ? "Resume scrolling" : "Pause scrolling"}</button>
     <div className="partners-foot"><span>{String(projects.length).padStart(2, "0")} LIVE WEBSITES</span><Link href="/work/">See the full portfolio <Arrow diagonal width="1em" height="1em" /></Link></div>
   </div></section>;
