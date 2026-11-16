@@ -12,7 +12,7 @@ test("touch scrolling uses lightweight mockups without filtered or moving card l
   await page.goto("/");
   await expect(page.locator(".site-header")).toHaveCSS("backdrop-filter", "none");
   await expect(page.locator(".horizon-lightfield")).toHaveCSS("animation-name", "none");
-  await page.getByRole("link", { name: "See more work", exact: true }).click();
+  await page.getByRole("link", { name: /See the full portfolio/ }).click();
   await expect(page).toHaveURL(/\/work\/$/);
 
   for (const stage of await page.locator(".work-grid .device-stage").all()) {

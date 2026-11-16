@@ -7,7 +7,6 @@ import { serviceLinks } from "@/lib/service-links";
 import { Arrow, Reveal, SectionLabel } from "./ui";
 import { ProjectButton } from "./site-shell";
 import { WordReveal } from "./word-reveal";
-import { Partners } from "./partners";
 
 function ServiceSystem() {
   return <figure className="service-system" aria-labelledby="service-system-caption">
@@ -52,7 +51,6 @@ export function Services() {
           </div>
         </div>
       </Reveal>)}</div>
-      <Partners />
     </div>
   </section>;
 }

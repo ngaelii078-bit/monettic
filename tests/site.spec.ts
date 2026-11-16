@@ -11,11 +11,13 @@ test("desktop renders the glass showcases, images load, and layout stays within 
   await expect(page.locator(".hero-showcase .showcase-item")).toHaveCount(3);
   await expect(page.locator(".showcase-growth")).toContainText("Campaigns. Leads. One pipeline.");
   await expect.poll(() => page.locator(".hero-showcase img").evaluateAll(images => images.length > 0 && images.every(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0))).toBeTruthy();
-  await expect(page.locator(".project-card")).toHaveCount(2);
-  await expect(page.getByRole("link", { name: "See more work", exact: true })).toHaveAttribute("href", "/work/");
-  for (const preview of await page.locator(".work-grid .project-image img:visible").all()) {
-    await preview.scrollIntoViewIfNeeded();
-    await expect.poll(() => preview.evaluate(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0)).toBeTruthy();
+  const partners = page.locator("#partners");
+  await expect(partners.getByRole("heading", { name: "Businesses we’ve built for.", exact: true })).toBeVisible();
+  await expect(partners.locator(".partner-tile")).toHaveCount(9);
+  await expect(partners.getByRole("link", { name: /See the full portfolio/ })).toHaveAttribute("href", "/work/");
+  for (const logo of await partners.locator(".partner-logo img").all()) {
+    await logo.scrollIntoViewIfNeeded();
+    await expect.poll(() => logo.evaluate(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0)).toBeTruthy();
   }
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: "test-results/desktop-hero.png" });
@@ -59,7 +61,7 @@ test("hero enquiries and preview links work while background motion pauses offsc
 
 test("portfolio filtering and keyboard-accessible project details", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "See more work", exact: true }).click();
+  await page.getByRole("link", { name: /See the full portfolio/ }).click();
   await expect(page).toHaveURL(/\/work\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Our work.Out in the world.");
   await expect(page.locator(".project-card")).toHaveCount(9);

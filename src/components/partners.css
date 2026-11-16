@@ -1,8 +1,8 @@
 .partners{padding-top:88px}
 .partners-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;margin-bottom:30px}
 .partners-heading .eyebrow{font-size:8px;letter-spacing:.13em;color:#9fb3c5;margin-bottom:17px}
-.partners-heading h3{font-family:var(--font-editorial,Georgia,serif);font-size:clamp(34px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.025em}
-.partners-heading h3>span{font-style:italic;color:#b8dbef}
+.partners-heading h2{font-family:var(--font-editorial,Georgia,serif);font-size:clamp(34px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.025em}
+.partners-heading h2>span{font-style:italic;color:#b8dbef}
 .partners-heading>p{font-size:12px;line-height:1.8;max-width:310px;color:#afbfcc}
 
 /* Each tile spans two subgrid rows (logo, meta) so logos and dividers line up across a row */
@@ -45,7 +45,7 @@
 }
 @media(max-width:600px){
   .partners{padding-top:60px}
-  .partners-heading h3{max-width:330px}
+  .partners-heading h2{max-width:330px}
   .partners-grid{gap:10px}
   .partner-tile{border-radius:13px}
   .partner-logo{height:100px;padding:16px;--logo-scale:.7}

@@ -23,9 +23,9 @@ function logoSize(id: string, width: number, height: number) {
 }
 
 export function Partners() {
-  return <section id="partners" className="partners" aria-labelledby="partners-heading">
+  return <section id="partners" className="partners light-section section-space" aria-labelledby="partners-heading"><div className="container">
     <div className="partners-heading">
-      <div><span className="eyebrow">OUR PARTNERS</span><h3 id="partners-heading">Businesses we’ve <span>built for.</span></h3></div>
+      <div><span className="eyebrow">OUR PARTNERS</span><h2 id="partners-heading">Businesses we’ve <span>built for.</span></h2></div>
       <p>Each logo opens a live website we designed and built. Click one to see it for yourself.</p>
     </div>
     <ul className="partners-grid" role="list">{projects.map((project, index) => {
@@ -39,5 +39,5 @@ export function Partners() {
       </Reveal>;
     })}</ul>
     <div className="partners-foot"><span>{String(projects.length).padStart(2, "0")} LIVE WEBSITES</span><Link href="/work/">See the full portfolio <Arrow diagonal width="1em" height="1em" /></Link></div>
-  </section>;
+  </div></section>;
 }
