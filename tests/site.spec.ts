@@ -15,7 +15,7 @@ test("desktop renders the glass showcases, images load, and layout stays within 
   await expect(partners.getByRole("heading", { name: "Businesses we’ve built for.", exact: true })).toBeVisible();
   await expect(partners.locator(".partner-tile")).toHaveCount(9);
   await expect(partners.getByRole("link", { name: /See the full portfolio/ })).toHaveAttribute("href", "/work/");
-  for (const logo of await partners.locator(".partner-logo img").all()) {
+  for (const logo of await partners.locator(".partner-tile .partner-logo img").all()) {
     await logo.scrollIntoViewIfNeeded();
     await expect.poll(() => logo.evaluate(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0)).toBeTruthy();
   }

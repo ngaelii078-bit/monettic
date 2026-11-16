@@ -1,8 +1,10 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/content";
-import { Arrow, Reveal } from "./ui";
+import { Arrow } from "./ui";
 
 // Logos have very different shapes (wide wordmarks vs. square badges).
 // Sizing each one to a similar visual area keeps the wall balanced.
@@ -23,21 +25,40 @@ function logoSize(id: string, width: number, height: number) {
 }
 
 export function Partners() {
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const section = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = section.current;
+    if (!element || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return <section id="partners" className="partners light-section section-space" aria-labelledby="partners-heading"><div className="container">
     <div className="partners-heading">
       <div><span className="eyebrow">OUR PARTNERS</span><h2 id="partners-heading">Businesses we’ve <span>built for.</span></h2></div>
       <p>Each logo opens a live website we designed and built. Click one to see it for yourself.</p>
     </div>
-    <ul className="partners-grid" role="list">{projects.map((project, index) => {
-      const size = logoSize(project.id, project.logo.width, project.logo.height);
-      return <Reveal as="li" className="partner-item" key={project.id} delay={index % 3 * 0.07}>
-        <a className="partner-tile" href={project.url} target="_blank" rel="noopener noreferrer" style={{ "--logo-w": `${size.width}px`, "--logo-h": `${size.height}px` } as CSSProperties}>
-          <span className="partner-logo"><Image src={project.logo.src} alt="" width={size.width} height={size.height} loading="lazy" /></span>
-          <span className="partner-meta"><span className="partner-name"><strong>{project.name}</strong><small>{project.category}</small></span><span className="partner-visit" aria-hidden="true"><Arrow diagonal /></span></span>
-          <span className="sr-only"> — visit website (opens in a new tab)</span>
-        </a>
-      </Reveal>;
-    })}</ul>
+    <div className="partners-rail" ref={section}>
+      <div className={`partners-track${paused || !visible ? " is-paused" : ""}`}>
+        {[false, true].map(duplicate => <ul className="partners-group" key={String(duplicate)} aria-hidden={duplicate || undefined}>
+          {projects.map(project => {
+            const size = logoSize(project.id, project.logo.width, project.logo.height);
+            return <li className="partner-item" key={project.id}>
+              <a className={duplicate ? "partner-clone-link" : "partner-tile"} href={project.url} target="_blank" rel="noopener noreferrer" tabIndex={duplicate ? -1 : undefined} style={{ "--logo-w": `${size.width}px`, "--logo-h": `${size.height}px` } as CSSProperties}>
+                <span className="partner-logo"><Image src={project.logo.src} alt="" width={size.width} height={size.height} loading="lazy" /></span>
+                <span className="sr-only">{project.name} — visit website (opens in a new tab)</span>
+              </a>
+              <span className="partners-separator" aria-hidden="true" />
+            </li>;
+          })}
+        </ul>)}
+      </div>
+    </div>
+    <button className="partners-motion-toggle" type="button" onClick={() => setPaused(current => !current)}>{paused ? "Resume scrolling" : "Pause scrolling"}</button>
     <div className="partners-foot"><span>{String(projects.length).padStart(2, "0")} LIVE WEBSITES</span><Link href="/work/">See the full portfolio <Arrow diagonal width="1em" height="1em" /></Link></div>
   </div></section>;
 }

@@ -38,6 +38,8 @@ test("partner logos link to each client's live website", async ({ page, context 
   await expect(partners.getByRole("heading", { name: "Businesses we’ve built for.", exact: true })).toBeVisible();
   const links = partners.locator(".partner-tile");
   await expect(links).toHaveCount(projects.length);
+  const clonedLinks = partners.locator('[aria-hidden="true"] .partner-clone-link');
+  await expect(clonedLinks).toHaveCount(projects.length);
   for (const [index, project] of projects.entries()) {
     const link = links.nth(index);
     await expect(link).toHaveAttribute("href", project.url);
@@ -45,8 +47,10 @@ test("partner logos link to each client's live website", async ({ page, context 
     await expect(link).toHaveAttribute("rel", "noopener noreferrer");
     await expect(link).toHaveAccessibleName(new RegExp(`^${project.name}`));
     await expect(link.locator("img")).toHaveAttribute("src", project.logo.src);
-    expect(await link.locator("img").evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBeTruthy();
+    await expect(clonedLinks.nth(index)).toHaveAttribute("tabindex", "-1");
   }
+  await links.first().scrollIntoViewIfNeeded();
+  await expect.poll(() => links.first().locator("img").evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBeTruthy();
   const [popup] = await Promise.all([page.waitForEvent("popup"), links.first().click()]);
   await expect(popup).toHaveURL(projects[0].url);
   await popup.close();
@@ -56,4 +60,28 @@ test("partner logos link to each client's live website", async ({ page, context 
   }
   const accessibility = await new AxeBuilder({ page }).include("#partners").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
   expect(accessibility.violations).toEqual([]);
+});
+
+test("partner marquee can be paused and respects reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/#partners");
+  const partners = page.locator("#partners");
+  const track = partners.locator(".partners-track");
+  await partners.locator(".partners-rail").scrollIntoViewIfNeeded();
+  await page.mouse.move(0, 0);
+  await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("running");
+
+  await partners.getByRole("button", { name: "Pause scrolling" }).click();
+  await page.mouse.move(0, 0);
+  await expect(partners.getByRole("button", { name: "Resume scrolling" })).toBeVisible();
+  await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("paused");
+
+  await partners.getByRole("button", { name: "Resume scrolling" }).click();
+  await partners.getByRole("button", { name: "Pause scrolling" }).blur();
+  await page.mouse.move(0, 0);
+  await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationPlayState)).toBe("running");
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect.poll(() => track.evaluate(element => getComputedStyle(element).animationName)).toBe("none");
+  await expect(partners.locator(".partner-tile").last()).toHaveAttribute("href", /https:\/\//);
 });
