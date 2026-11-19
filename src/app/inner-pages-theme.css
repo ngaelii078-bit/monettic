@@ -1,0 +1,23 @@
+/* Keep the original Monettic palette while using the updated editorial type. */
+main .portfolio-page{--font-editorial:var(--font-display)}
+.portfolio-page .portfolio-intro h1{font-family:var(--font-display);font-weight:550;letter-spacing:-.065em}
+.portfolio-page .portfolio-caption h2{font-family:var(--font-display)}
+.portfolio-page .portfolio-invite h2{font-family:var(--font-display);font-weight:500;letter-spacing:-.05em}
+.portfolio-page .portfolio-tile,.portfolio-page .portfolio-invite{border-radius:4px}
+
+main:not(.home) .article-page.light-section,main.article-page.light-section{--font-editorial:var(--font-display)}
+.article-page h1,.article-page .article-body h2{font-family:var(--font-display);font-weight:550;letter-spacing:-.055em}
+.service-detail .service-scope{border-radius:4px}
+.service-detail .service-scope h2,.service-detail .service-faq>h2,.service-detail .service-related h2,.service-detail .service-directory h2{font-family:var(--font-display);font-weight:500;letter-spacing:-.05em}
+.privacy-page .privacy-sidebar nav{border-radius:4px}
+
+/* Shared contact block on the service and journal pages. */
+main:not(.home) .contact-section{--font-editorial:var(--font-display)}
+main:not(.home) .contact-section h2,main:not(.home) .contact-section h2>.contact-accent{font-family:var(--font-display);font-weight:500;letter-spacing:-.055em}
+main:not(.home) .contact-section h2>.contact-accent{font-style:italic}
+.not-found h1{font-family:var(--font-display);font-weight:550}
+
+/* Both enquiry and portfolio dialogs are shared with the homepage. */
+dialog.project-dialog,dialog.case-dialog{--font-editorial:var(--font-display)}
+dialog .dialog-inner h2,dialog .case-content h2{font-family:var(--font-display);font-weight:550;letter-spacing:-.055em}
+dialog .dialog-inner h2>span{font-family:var(--font-display)}

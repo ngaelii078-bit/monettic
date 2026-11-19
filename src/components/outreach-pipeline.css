@@ -1,0 +1,33 @@
+.outreach-pipeline{position:relative;overflow:clip;background:#052c42;color:#f3fbff;border-block:1px solid #cceaff24}
+.outreach-pipeline .section-label{margin-bottom:64px;color:#b5d7e7}
+.outreach-pipeline-intro{display:grid;grid-template-columns:1.2fr .65fr;align-items:end;gap:60px;margin-bottom:72px}
+.outreach-pipeline-intro h2{max-width:770px;font-family:var(--font-display),Arial,sans-serif;font-size:clamp(45px,5.3vw,78px);font-weight:500;letter-spacing:-.055em;line-height:1.04}
+.outreach-pipeline-intro h2 span{color:#a7deee}
+.outreach-pipeline-intro>p{max-width:340px;color:#bddce9;font-size:14px;line-height:1.75}
+.outreach-pipeline-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(48px,7vw,110px);align-items:start}
+.outreach-pipeline-aside{position:sticky;top:110px;align-self:start}
+.outreach-pipeline-card{padding:24px;border:1px solid #b6cced38;background:linear-gradient(145deg,#c2eaff0c,transparent 70%),#06273a;box-shadow:inset 0 1px 0 #e0f7ff0b,0 22px 60px #001a291f}
+.outreach-pipeline-card-top,.outreach-pipeline-card-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#a7cbdc;font-family:monospace;font-size:9px;letter-spacing:.1em}
+.outreach-pipeline-card-top{padding-bottom:21px;border-bottom:1px solid #b6cced2b}
+.outreach-pipeline-rail{position:relative;margin:23px 0}
+.outreach-pipeline-rail:before{content:"";position:absolute;top:21px;bottom:21px;left:4px;width:1px;background:#b6ddeb40}
+.outreach-pipeline-rail-item{position:relative;display:flex;align-items:center;gap:14px;min-height:51px;color:#b0cbd7;font-family:monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;transition:color .3s ease}
+.outreach-pipeline-node{width:9px;height:9px;flex:none;border:1px solid #85a8b9;border-radius:50%;background:#06273a;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.outreach-pipeline-rule{height:1px;min-width:30px;flex:1;background:#b6ddeb26}
+.outreach-pipeline-rail-item[data-active="true"]{color:#f3fbff}
+.outreach-pipeline-rail-item[data-active="true"] .outreach-pipeline-node{background:#8deafa;border-color:#8deafa;box-shadow:0 0 0 4px #8deafa1c,0 0 18px #8deafa80}
+.outreach-pipeline-rail-item[data-active="true"] .outreach-pipeline-rule{background:#8deafa88}
+.outreach-pipeline-card-foot{padding:19px 0 0;border-top:1px solid #b6cced2b;color:#cbe4ee}
+.outreach-pipeline-card-foot svg{color:#8deafa}
+.outreach-pipeline-steps{list-style:none;margin:0;padding:0}
+.outreach-pipeline-step{min-height:230px;padding:29px 0 45px;border-top:1px solid #b6cced38}
+.outreach-pipeline-step:last-child{border-bottom:1px solid #b6cced38}
+.outreach-pipeline-step-label{display:flex;align-items:center;gap:12px;color:#a7cbdc;font-family:monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.outreach-pipeline-step-label>span:first-child{color:#8deafa}
+.outreach-pipeline-step h3{margin:22px 0 12px;font-family:var(--font-display),Arial,sans-serif;font-size:clamp(25px,2.5vw,36px);font-weight:500;letter-spacing:-.045em;line-height:1.16}
+.outreach-pipeline-step p{max-width:440px;color:#bddce9;font-size:13px;line-height:1.8}
+.outreach-pipeline-action{display:flex;justify-content:space-between;align-items:center;gap:28px;margin-top:60px;padding-top:28px;border-top:1px solid #b6cced38}
+.outreach-pipeline-action p{max-width:380px;color:#bddce9;font-size:13px;line-height:1.7}
+@media(max-width:900px){.outreach-pipeline-intro{grid-template-columns:1fr;gap:24px;margin-bottom:45px}.outreach-pipeline-intro>p{max-width:480px}.outreach-pipeline-layout{grid-template-columns:1fr;gap:38px}.outreach-pipeline-aside{position:relative;top:auto}.outreach-pipeline-card{max-width:none}.outreach-pipeline-step{min-height:0;padding:25px 0 35px}}
+@media(max-width:600px){.outreach-pipeline .section-label{margin-bottom:38px}.outreach-pipeline-intro h2{font-size:clamp(38px,10vw,51px)}.outreach-pipeline-intro>p,.outreach-pipeline-step p{font-size:12px}.outreach-pipeline-card{padding:19px}.outreach-pipeline-rail-item{min-height:43px}.outreach-pipeline-step h3{font-size:27px;margin-top:18px}.outreach-pipeline-action{align-items:flex-start;flex-direction:column;gap:20px;margin-top:42px}}
+@media(prefers-reduced-motion:reduce){.outreach-pipeline-rail-item,.outreach-pipeline-node{transition:none}}

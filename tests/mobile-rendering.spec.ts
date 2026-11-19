@@ -10,9 +10,9 @@ test("touch scrolling uses lightweight mockups without filtered or moving card l
   });
   page.on("pageerror", error => failures.push(error.message));
   await page.goto("/");
-  await expect(page.locator(".site-header")).toHaveCSS("backdrop-filter", "none");
-  await expect(page.locator(".horizon-lightfield")).toHaveCSS("animation-name", "none");
-  await page.getByRole("link", { name: /See the full portfolio/ }).click();
+  await expect(page.locator(".mx-nav")).toHaveCSS("backdrop-filter", "none");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/we find your next clients\.\s*then help you close them\./);
+  await page.getByRole("link", { name: /See the portfolio/ }).click();
   await expect(page).toHaveURL(/\/work\/$/);
 
   for (const stage of await page.locator(".work-grid .device-stage").all()) {

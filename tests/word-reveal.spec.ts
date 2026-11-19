@@ -7,8 +7,8 @@ test("headings reveal from masks with staggered words, then remain readable", as
   page.on("pageerror", error => errors.push(error.message));
   await page.goto("/");
   await page.addStyleTag({ content: "html { scroll-behavior: auto !important; }" });
-  await expect(page.getByRole("heading", { name: "Bold ideas. Solid impact." })).toBeVisible();
-  const heading = page.locator("#services-heading");
+  await expect(page.getByRole("heading", { name: /we find your next clients\.\s*then help you close them\./ })).toBeVisible();
+  const heading = page.locator("#work-heading");
   const first = heading.locator(".heading-word").first();
   const last = heading.locator(".heading-word").last();
   await expect(heading).toHaveAttribute("data-reveal-state", "waiting");
@@ -36,14 +36,14 @@ test("mobile headings keep their accents and respect live reduced-motion changes
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  await expect(page.locator("#journal-heading")).toHaveAttribute("data-reveal-state", "waiting");
+  await expect(page.locator("#services-heading")).toHaveAttribute("data-reveal-state", "waiting");
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const word = page.locator("#journal-heading .heading-word").last();
+  const word = page.locator("#services-heading .heading-word").last();
   await expect(word).toHaveCSS("opacity", "1");
   await expect(word).toHaveCSS("transform", "none");
   await page.locator("#contact").scrollIntoViewIfNeeded();
-  await expect(page.locator(".contact-accent .heading-word")).toHaveCSS("font-style", "italic");
-  await expect(page.locator(".contact-accent .heading-word")).toHaveCSS("color", "rgb(141, 234, 250)");
+  await expect(page.locator("#contact-heading .mx-serif .heading-word").first()).toHaveCSS("font-style", "italic");
+  await expect(page.locator("#contact-heading .mx-serif .heading-word").first()).toHaveCSS("color", "rgb(79, 210, 242)");
   await page.screenshot({ path: "test-results/masked-headings-mobile.png" });
   for (const width of [320, 768, 1024]) {
     await page.setViewportSize({ width, height: 844 });
@@ -55,7 +55,7 @@ test("headings remain present without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(process.env.PREVIEW_URL || "http://127.0.0.1:3001");
-  await expect(page.getByRole("heading", { name: "Less ordinary. More memorable." })).toBeVisible();
-  await expect(page.locator("#services-heading .heading-word").first()).toHaveCSS("opacity", "1");
+  await expect(page.getByRole("heading", { name: /we find your next clients\.\s*then help you close them\./ })).toBeVisible();
+  await expect(page.locator("#work-heading .heading-word").first()).toHaveCSS("opacity", "1");
   await context.close();
 });

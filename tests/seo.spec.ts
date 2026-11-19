@@ -91,12 +91,10 @@ test("service pages remain readable on mobile and open the relevant enquiry sele
   await page.screenshot({ path: "test-results/service-desktop.png", fullPage: true });
 });
 
-test("homepage and services directory provide crawlable links to every service", async ({ page }) => {
+test("homepage links to the services directory and it links to every service", async ({ page }) => {
   await page.goto("/");
-  const links = page.getByRole("navigation", { name: "Explore our services" }).getByRole("link");
-  await expect(links).toHaveCount(4);
-  for (const service of servicePages) await expect(links.filter({ hasText: service.name })).toHaveAttribute("href", `/services/${service.slug}/`);
-  await page.getByRole("contentinfo").getByRole("link", { name: "Services", exact: true }).click();
+  await page.getByRole("contentinfo").getByRole("link", { name: "services", exact: true }).click();
   await expect(page).toHaveURL(/\/services\/$/);
   await expect(page.locator(".service-directory article")).toHaveCount(4);
+  for (const service of servicePages) await expect(page.locator(".service-directory").getByRole("link", { name: service.name })).toHaveAttribute("href", `/services/${service.slug}/`);
 });

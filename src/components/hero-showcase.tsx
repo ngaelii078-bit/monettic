@@ -24,7 +24,7 @@ export function HeroShowcase() {
       </div>
     </a>
 
-    <a className="showcase-item showcase-growth" href="#growth-services" aria-label="Explore our lead generation and business growth services">
+    <a className="showcase-item showcase-growth" href="#services" aria-label="Explore our lead generation and business growth services">
       <div className="showcase-label"><span><i />02 / CONNECTED EXPERIENCES</span><ShowcaseArrow /></div>
       <div className="showcase-panel">
         <div className="showcase-panel-heading"><span>Campaigns. Leads. One pipeline.</span><span className="showcase-flow-indicator" aria-hidden="true"><i />CONNECTED</span></div>

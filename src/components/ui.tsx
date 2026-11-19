@@ -18,8 +18,18 @@ export function FoundationAccent({ className = "" }: { className?: string }) {
   return <svg className={`foundation-accent ${className}`.trim()} width="1em" height="1em" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false"><path d="m24 4 18 10v20L24 44 6 34V14L24 4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><path d="m6 14 18 10 18-10M24 24v20" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /></svg>;
 }
 
+/** The monettic "Mt" monogram, traced from the master logo (brand-assets/monettic-logo.jpg). */
+export const MONOGRAM_PATH = "M178 665V152h93l155 321 154-321h92v131h146v79H672v158a65 65 0 0 0 65 65h54v80h-54a143 143 0 0 1-143-145V318L426 665 258 318v347Z";
+export const BRAND_BLUE = "#419cdc";
+
+/** Monogram only, in the current text colour. */
 export function Mark({ className = "" }: { className?: string }) {
-  return <svg className={className} width="37" height="37" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 34V6h7l8 12L28 6h7v28h-7V18l-8 11-8-11v16H5Z" fill="currentColor" /></svg>;
+  return <svg className={className} width="40" height="32" viewBox="178 152 640 513" fill="none" aria-hidden="true"><path d={MONOGRAM_PATH} fill="currentColor" /></svg>;
+}
+
+/** The full logo: white monogram on the brand-blue tile, at the master artwork's proportions. */
+export function LogoTile({ className = "" }: { className?: string }) {
+  return <svg className={className} width="36" height="30" viewBox="0 0 987 817" aria-hidden="true"><rect width="987" height="817" fill={BRAND_BLUE} /><path d={MONOGRAM_PATH} fill="#fff" /></svg>;
 }
 
 export function Reveal({ children, className = "", delay = 0, as = "div" }: { children: ReactNode; className?: string; delay?: number; as?: "div" | "li" }) {

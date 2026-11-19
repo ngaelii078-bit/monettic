@@ -5,7 +5,7 @@ const endpoint = "**/api/enquiry/";
 
 async function fillEnquiry(page: Page) {
   await page.goto("/");
-  await page.locator(".button-nav").click();
+  await page.locator(".mx-nav-cta").click();
   await page.getByLabel("Your name").fill("Alex Example");
   await page.getByLabel("Email address").fill("alex@example.com");
   await page.getByLabel("Company", { exact: true }).fill("Example Studio");
@@ -54,8 +54,8 @@ test("enquiry sends every field once, then thanks the visitor without navigating
   const accessibility = await new AxeBuilder({ page }).include("dialog[open]").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
   expect(accessibility.violations).toEqual([]);
   await page.getByRole("button", { name: "Back to the website" }).click();
-  await expect(page.locator(".button-nav")).toBeFocused();
-  await page.locator(".button-nav").click();
+  await expect(page.locator(".mx-nav-cta")).toBeFocused();
+  await page.locator(".mx-nav-cta").click();
   await expect(page.getByLabel("Your name")).toHaveValue("");
   await expect(page.getByRole("checkbox", { name: "Website build", exact: true })).not.toBeChecked();
 });

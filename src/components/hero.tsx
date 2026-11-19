@@ -1,31 +1,52 @@
 "use client";
 
-import Link from "next/link";
-import { Arrow, FoundationAccent } from "./ui";
+import { useEffect, useRef, useState } from "react";
+import { Arrow, FoundationAccent, Reveal } from "./ui";
 import { ProjectButton } from "./site-shell";
 import { WordReveal } from "./word-reveal";
-import { Horizon } from "./horizon";
-import { HeroShowcase } from "./hero-showcase";
 
 export function Hero() {
-  return <section className="hero cinematic-hero" aria-labelledby="hero-heading">
-    <Horizon />
-    <div className="container hero-inner">
-      <div className="hero-copy">
-        <div className="eyebrow hero-enter"><span className="status-dot" />MONETTIC · SOUTH AFRICA</div>
-        <WordReveal as="h1" id="hero-heading" delay={100}>Bold ideas.<br />Solid <span className="hero-italic">impact.</span></WordReveal>
-        <p className="hero-description hero-enter delay-2">Websites, ecommerce, design and lead generation.<br />SEO + AEO, email outreach and integrated sales tools.</p>
-        <Link className="hero-offer hero-enter delay-2" href="/services/ai-automation/">Website included with Full AI Integration <Arrow diagonal /></Link>
-        <div className="hero-buttons hero-enter delay-3"><ProjectButton className="hero-orb" arrow={false}><Arrow diagonal /><span>Let’s make<br /><strong>it happen.</strong></span></ProjectButton></div>
+  const section = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const element = section.current;
+    if (!element || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <section ref={section} className="hero reference-hero" aria-labelledby="hero-heading">
+    <div className="reference-hero-light" data-active={visible} aria-hidden="true" />
+    <div className="container reference-hero-inner">
+      <div className="reference-hero-content">
+        <div className="reference-hero-eyebrow hero-enter"><span aria-hidden="true" /> MONETTIC · OUTREACH · CONTENT · SALES SYSTEMS</div>
+        <WordReveal as="h1" id="hero-heading" delay={100}>We help your business<br /><span className="reference-hero-accent">win more clients.</span></WordReveal>
+        <p className="reference-hero-description hero-enter delay-2">We run your outreach, build your content strategy and set up a sales system that gets clients over the line.</p>
+        <div className="reference-hero-actions hero-enter delay-3">
+          <ProjectButton className="reference-hero-primary" arrow={false}>Start a conversation <Arrow diagonal width="15" height="15" /></ProjectButton>
+          <a href="#partners" className="reference-hero-secondary">Meet our clients <Arrow diagonal width="15" height="15" /></a>
+        </div>
       </div>
-      <div className="hero-margin-note hero-note-left hero-enter delay-3"><span className="margin-note-number">01 — 03</span><p>Find.<br />Connect.<br /><em>Grow.</em></p><span className="margin-note-rule" /><span>BUILT AROUND YOUR BUSINESS.</span></div>
-      <div className="hero-margin-note hero-note-right hero-enter delay-3"><span className="margin-note-number">FROM CAMPAIGNS<br />TO YOUR PIPELINE.</span><p>One system.<br /><em>A clear next step.</em></p><a href="#services">Explore what we do <Arrow diagonal /></a></div>
-      <HeroShowcase />
-      <div className="hero-bottom"><span>WEBSITES + OUTREACH + SALES SYSTEMS</span><span className="hero-bottom-mid">Good conversations. Real possibilities.</span><a href="#services">SCROLL TO EXPLORE <span><Arrow direction="down" width="1em" height="1em" /></span></a></div>
+      <div className="reference-hero-bottom"><span>OUTREACH · CONTENT · SALES SYSTEMS</span><a href="#services">EXPLORE WHAT WE DO <Arrow direction="down" width="14" height="14" /></a></div>
     </div>
   </section>;
 }
 
 export function DisciplineStrip() {
   return <div className="discipline-strip" aria-label="Lead scraping, email outreach, SEO and AEO, graphic design, content integration, AI integration and CRM"><div className="discipline-track">{[0, 1].map(copy => <div className="discipline-group" key={copy} aria-hidden={copy === 1}>{["Lead scraping", "Email outreach", "SEO + AEO", "Graphic design", "Content integration", "AI integration + CRM"].map(word => <span key={word}>{word}<FoundationAccent className="strip-accent" /></span>)}</div>)}</div></div>;
+}
+
+const coreServices = [
+  { name: "Outreach", description: "We reach out to new clients for you, whether you sell to other businesses (B2B) or to the public (B2C)." },
+  { name: "Content strategy", description: "We build a content plan for your business, so the right people see what you do." },
+  { name: "Sales systems", description: "We set up a sales system that makes selling easier for your team and gets more clients over the line." },
+];
+
+export function CoreServices() {
+  return <section className="core-services" aria-labelledby="core-services-heading"><div className="container">
+    <Reveal><div className="core-services-heading"><span className="eyebrow">WHAT WE DO</span><h2 id="core-services-heading">A clearer path to your <em>next client.</em></h2></div></Reveal>
+    <div className="core-services-grid">{coreServices.map((service, index) => <Reveal key={service.name} delay={index * .08}>
+      <article className="core-service"><span className="core-service-number">0{index + 1}</span><h3>{service.name}</h3><p>{service.description}</p></article>
+    </Reveal>)}</div>
+  </div></section>;
 }

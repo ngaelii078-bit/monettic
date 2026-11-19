@@ -1,7 +1,7 @@
 export const agency = {
   name: "monettic",
   email: "eliseeweb@gmail.com",
-  description: "monettic builds business websites, ecommerce stores and custom web apps, with SEO, design, lead generation and AI integration in South Africa.",
+  description: "monettic helps businesses win more clients through outreach, content strategy and sales systems, with a personalised sales dashboard and CRM.",
 };
 
 export const services = [
